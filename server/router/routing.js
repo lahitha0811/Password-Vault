@@ -63,7 +63,12 @@ router.post("/login", async (req, res) => {
 
     const token = await user.generateAuthToken();
 
-    res.cookie("jwtoken", token, { expires: new Date(Date.now() + 2592000000), httpOnly: true });
+    res.cookie("jwtoken", token, {
+      expires: new Date(Date.now() + 2592000000),
+      httpOnly: true,
+      secure: true,
+      sameSite: "none"
+    });
 
 
 
@@ -175,7 +180,11 @@ router.put("/updatepassword", authenticate, async (req, res) => {
 
 router.get("/logout", (req, res) => {
   console.log(req.body);
-  res.clearCookie("jwtoken", { path: "/" });
+  res.clearCookie("jwtoken", {
+  path: "/",
+  secure: true,
+  sameSite: "none"
+  });
   res.status(200).send("Logout");
 });
 
