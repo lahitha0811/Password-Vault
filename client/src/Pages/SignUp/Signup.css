@@ -1,0 +1,347 @@
+.signup {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+:root {
+  --primary-bg: #1e2a78; 
+}
+.signup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #1e2a78;
+  z-index: -1;
+}
+
+.signup::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #ff1f5a;
+  z-index: -1;
+}
+
+.signup__wrapper {
+  width: 85%;
+  height: 80%;
+  border-radius: 13px;
+  margin-top: 4rem;
+}
+
+.signup__left {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(40px);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.425);
+  font-size: 0.7rem;
+  padding: 1rem 0;
+}
+
+.signup__left p, .signup__left p a {
+  color: #FFF;
+  font-size: 1rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  color: var(--primary-bg);
+}
+
+.inputs input {
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.inputs label {
+  font-size: 0.8rem;
+}
+
+.signup__left button {
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--primary-bg);
+  color: #eeeeee;
+}
+
+.signup__right {
+  display: none;
+}
+
+@media only screen and (min-width: 900px) {
+  .signup__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .signup__left {
+    background-color: #1e2a78;
+    flex: 40%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .signup__right {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 60%;
+    padding: 3rem;
+    background-color: #ff1f5a;
+    position: relative;
+  }
+
+  .signup__right img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .signup__content {
+    z-index: 1;
+    color: #eeeeee;
+  }
+
+  .inputs label {
+    color: #eeeeee;
+  }
+
+  .signup__content h1 {
+    font-size: 4rem;
+    font-weight: bolder;
+    color: #eeeeee;
+  }
+
+  .signup__content h4 {
+    font-weight: normal;
+  }
+
+  .signup__content p {
+    font-size: 1.5rem;
+  }
+
+  .signup__content a:nth-child(1) {
+    color: #ff1f5a;
+    border-bottom: 2px solid #ff4476a8;
+  }
+
+  .attr {
+    color: #fdfdfda1;
+    position: absolute;
+    bottom: 1rem;
+    left: 3rem;
+    font-size: 0.5rem;
+  }
+
+  .inputs {
+    width: 90%;
+  }
+}
+
+
+/* Add to Login.css and Signup.css */
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-input-wrapper input {
+    width: 100% !important; /* Forces the input to fill the container */
+    padding-right: 40px !important; /* Makes room for the icon */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #666;
+    z-index: 10;
+}
+
+/* Fix for the column split on larger screens */
+@media only screen and (min-width: 900px) {
+  .login__wrapper, .signup__wrapper {
+      display: flex !important; /* Ensures columns stay side-by-side */
+      overflow: hidden;
+  }
+}
+
+/* Restores the 40/60 split */
+@media only screen and (min-width: 900px) {
+  .signup__wrapper {
+    display: flex !important;
+    flex-direction: row; /* Form on left, Image on right */
+  }
+  .signup__left { flex: 40%; }
+  .signup__right { flex: 60%; display: flex; }
+}
+
+/* Eye Icon Alignment */
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+.password-toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ccc;
+}
+
+/* The Warning Box Styling */
+.security-notice-box {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #ff1f5a;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 90%;
+    text-align: left;
+}
+.security-notice-box h5 { color: #ff1f5a; margin-bottom: 5px; font-size: 14px; }
+.security-notice-box p { font-size: 12px; color: #eee; margin-bottom: 10px; }
+.security-notice-box label { font-size: 12px; color: #fff; display: flex; gap: 8px; align-items: center; }
+
+/* Ensure the wrapper uses the full space correctly */
+.signup__wrapper {
+  display: flex;
+  flex-direction: row; /* Desktop: Form left, Image right */
+  width: 90%;
+  height: 85vh;
+  margin-top: 2rem;
+  background-color: #1e2a78;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Form Container */
+.signup__left {
+  flex: 40%;
+  background-color: #1e2a78; /* Ensure it stays blue */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: center;
+}
+
+/* Image Container */
+.signup__right {
+  flex: 60%;
+  position: relative;
+  display: flex;
+  background-color: #ff1f5a; /* Backup color */
+}
+
+/* RED SIGNUP BUTTON - Matches background accent */
+.signup-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.signup-btn {
+  background-color: #ff1f5a !important; /* The reddish-pink shade */
+  color: #fff !important;
+  padding: 0.8rem 2.5rem !important;
+  border-radius: 5px !important;
+  font-weight: bold;
+  font-size: 1rem;
+  width: auto;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.signup-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* THE WARNING BOX - Centered and Styled */
+.security-policy-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #f90748;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 90%;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.security-policy-container h5 {
+  color: #e60c46;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.security-policy-container p {
+  font-size: 0.75rem;
+  color: #ddd;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.checkbox-wrapper label {
+    font-size: 0.7rem !important;
+    color: #fff !important;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+/* Ensure labels stay on top of inputs */
+.inputs {
+  width: 100% !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.inputs label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
