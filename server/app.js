@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const cors=require("cors");
+const cors = require("cors");
 
 // Load env
 dotenv.config({ path: path.join(__dirname, "config.env") });
@@ -12,40 +12,27 @@ dotenv.config({ path: path.join(__dirname, "config.env") });
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({
+app.use(
+  cors({
     origin: process.env.CLIENT_URL,
-    credentials: true
-}));
-
-// ===== SERVE REACT FIRST =====
-const __dirname1 = path.resolve();
-
-if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => {
-    res.sendFile(
-      path.join(__dirname1, "client", "build", "index.html")
-    );
-  });
-}
+    credentials: true,
+  })
+);
 
 // DB
 require("./db/connection");
 
+// Test Route
+app.get("/", (req, res) => {
+  res.send("Password Vault Backend Running");
+});
+
 // Routes
 app.use(require("./router/routing"));
 
-// React fallback (AFTER routes)
-if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => {
-    res.sendFile(
-      path.join(__dirname1, "client", "build", "index.html")
-    );
-  });
-}
-
-
 // Start server
 const PORT = process.env.PORT || 8000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
